@@ -1,0 +1,38 @@
+<nav class="navbar">
+    <div class="max-width">
+        <div class="logo"><img src="{{ ASSETS_ROOT }}/images/logo.png" alt=""></div>
+        <div class="menu">
+            <ul class="menu-list">
+                <li><a href="{% url 'home' %}" class="menu-btn active">HOME</a></li>
+                <li><a href="{% url 'events' %}"  class="menu-btn">EVENTS</a></li>
+                <li><a href="{% url 'home' %}#about" class="menu-btn">ABOUT</a></li>
+                <li><a href="#" class="menu-btn">TEAM</a></li>
+                <!-- <li><a href="sponsors.html" class="menu-btn">SPONSORS</a></li> -->
+                <li><a href="{% url 'home' %}#contact" class="menu-btn">CONTACT</a></li>
+            </ul>
+        </div>
+        {% if user.is_authenticated %}
+            {% comment %} <a href="{% url 'logout' %}"><button class="logbtn">Log Out</button></a> {% endcomment %}
+            <div class="dropdown">
+                <img class="profile-icon"src="{{ ASSETS_ROOT }}/images/profile.png">
+                <button class="dropdown-button">{{request.user.username}} ▽</button>
+                <div class="dropdown-content">
+            
+                    <a href="#">Profile</a>
+                    
+                    <a href="#">Settings</a>
+                    <hr>
+                    <a href="{% url 'logout' %}">Logout</a>
+                </div>
+            </div>
+        
+        {% else %}
+            <a href="{% url 'login' %}"><button class="logbtn">Log In</button></a>
+          
+        
+        {% endif %}
+        <div class="menu-btn">
+            <i class="fas fa-bars"></i>
+        </div>
+    </div>
+</nav>

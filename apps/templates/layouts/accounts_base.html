@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>title</title>
+    {% comment %} <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css"> {% endcomment %}
+    <link rel="stylesheet" href="{{ ASSETS_ROOT }}/layouts/base.css">
+    <link rel="stylesheet" href="{{ ASSETS_ROOT }}/includes/navbar.css">
+    {% block addon_css %}{% endblock addon_css %}
+    
+
+</head>
+
+<body>
+    {% include "includes/success_alert.html" %}
+    {% block body %}{% endblock %}
+
+    {% block addon_js %}{% endblock addon_js %}
+
+</body>
+
+</html>

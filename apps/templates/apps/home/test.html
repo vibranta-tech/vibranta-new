@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+
+        .form-container {
+            background-color: #ffffff;
+            padding: 20px 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .form-container h2 {
+            margin-top: 0;
+            margin-bottom: 15px;
+            font-size: 24px;
+            color: #333333;
+        }
+
+        .form-container label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #555555;
+        }
+
+        .form-container input,
+        .form-container select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #cccccc;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        .form-container input::placeholder {
+            color: #aaaaaa;
+        }
+
+        .form-container button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .form-container button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2>Your Info</h2>
+        <form>
+            <label for="name">Name *</label>
+            <input type="text" id="name" placeholder="Your Name" required>
+
+            <label for="email">Email *</label>
+            <input type="email" id="email" placeholder="you@email.com" required>
+
+            <label for="crypto">Do you work in crypto?</label>
+            <select id="crypto">
+                <option value="" disabled selected>Select an option</option>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+                <option value="prefer-not-to-say">Prefer not to say</option>
+            </select>
+
+            <label for="role">What is your role? *</label>
+            <input type="text" id="role" placeholder="" required>
+
+            <label for="linkedin">What is your Linkedin profile?</label>
+            <input type="url" id="linkedin" placeholder="">
+
+            <label for="twitter">What is your Twitter handle?</label>
+            <input type="text" id="twitter" placeholder="@username">
+
+            <button type="submit">Request to Join</button>
+        </form>
+    </div>
+</body>
+</html>

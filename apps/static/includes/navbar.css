@@ -1,0 +1,176 @@
+/* ---------------------------------------------Navigation------------------------------------------------- */
+.navbar{
+position: absolute;
+width: 100%;
+height: 112px;
+z-index: 999;
+padding: 20px 0;
+font-family: 'Ubuntu', sans-serif;
+transition: all 0.3s ease;
+/* background-color: blue; */
+position: fixed;
+}
+.navbar.sticky{
+padding: 15px 0;
+background: #ffffff29;
+background-color: green;
+}
+.navbar .max-width{
+display: flex;
+max-width: 1220px;
+margin: auto;
+align-items: center;
+justify-content: space-between;
+padding: 0 30px;
+}
+.navbar .logo{
+color: #fff;
+}
+.navbar .logo img{
+width: 70px;
+height: 60px;
+/* border-radius: 50%; */
+/* transition: all 0.3s ease; */
+}
+.navbar .menu{
+border: 0.5px solid #565656be;
+background-color: #1f1e1e;
+padding: 10px 10px;
+border-radius: 22px;
+min-width: 47%;
+
+height: 64px;
+display: flex;
+
+}
+
+.navbar .menu-list{
+width: 100%;
+display: flex;
+flex-direction: row;
+align-items: center;
+justify-content: space-between;
+}
+
+
+.navbar .menu-btn{
+color: #fff;
+font-size: 23px;
+cursor: pointer;
+display: none;
+}
+.navbar .menu-list li{
+list-style: none;
+display: inline-block;
+/* background-color: aqua; */
+}
+.navbar .menu-list li a{
+padding: 15px 25px;
+display: block;
+color: #fff;
+border: 0.5px dashed #525252;
+/* line-height: 20px; */
+font-size: 0.8rem;
+font-weight: 100;
+transition: color 0.3s ease;
+border-radius: 16px;
+}
+.navbar .menu-list li a:hover{
+border: 0.5px solid #525252;
+}
+.navbar .menu-list li a:hover{
+/* color: crimson; */
+color: #f7f7f7;
+}
+.navbar.sticky .menu-list li a:hover{
+color: #fff;
+}
+.navbar  .logbtn{
+background: linear-gradient(to bottom right, #EF4765, #FF9A5A);
+border: 0;
+border-radius: 12px;
+color: #FFFFFF;
+cursor: pointer;
+display: inline-block;
+font-family: -apple-system,system-ui,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+font-size: 16px;
+font-weight: 500;
+line-height: 2.5;
+outline: transparent;
+padding: 5px 40px;
+text-align: center;
+text-decoration: none;
+transition: box-shadow .2s ease-in-out;
+user-select: none;
+-webkit-user-select: none;
+touch-action: manipulation;
+white-space: nowrap;
+}
+
+.navbar .logbtn:not([disabled]):focus {
+box-shadow: 0 0 .25rem rgba(0, 0, 0, 0.5), -.125rem -.125rem 1rem rgba(239, 71, 101, 0.5), .125rem .125rem 1rem rgba(255, 154, 90, 0.5);
+}
+
+.navbar .logbtn:not([disabled]):hover {
+box-shadow: 0 0 .25rem rgba(0, 0, 0, 0.5), -.125rem -.125rem 1rem rgba(239, 71, 101, 0.5), .125rem .125rem 1rem rgba(255, 154, 90, 0.5);
+}
+
+
+
+/* Dropdown container */
+.dropdown {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+}
+
+/* Profile icon */
+.profile-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #ccc; /* Placeholder color */
+    margin-right: 0px;
+}
+
+/* Dropdown button */
+.dropdown-button {
+    background-color: transparent;
+    color: white;
+    padding: 10px 10px;
+    font-size: 0.9rem;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+/* Dropdown content (hidden by default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #1f1e1e;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    border-radius: 10px;
+    top: 89%;
+    left: 26%;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    color: rgb(255, 255, 255);
+    padding: 10px 15px;
+    text-decoration: none;
+    display: block;
+}
+
+/* Change link color on hover */
+.dropdown-content a:hover {
+    background-color: #2e2a2a;
+}
+
+/* Show the dropdown content on hover */
+.dropdown:hover .dropdown-content {
+    display: block;
+}

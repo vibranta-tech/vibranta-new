@@ -1,0 +1,37 @@
+{% extends "layouts/home_base.html" %}
+
+{% block addon_css %}
+<link rel="stylesheet" href="{{ ASSETS_ROOT }}/apps/home/events_details.css">
+{% endblock addon_css %}
+
+
+
+{% block body %}
+
+<section >
+</section>
+
+<section class="next-event">
+    <h1>Event Details</h1>
+    <h3 style="color:white;">id: {{event.id}}</h3>
+    <h3 style="color:white;">name: {{event.name}}</h3>
+    <p style="color:white;"> {{event.description}}</h3>
+    <div class="upcoming-event-box"></div>
+    <button class="register-btn" id="register-btn">Register</button>
+</section>
+
+
+
+
+{% include 'apps/payments/buy_ticket.html' %}
+
+
+
+{% endblock body %}
+
+
+
+{% block addon_js %}
+
+<script src="{{ ASSETS_ROOT }}/apps/payments/buy_ticket.js"></script>
+{% endblock addon_js %}

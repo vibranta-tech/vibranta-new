@@ -1,0 +1,35 @@
+
+
+<div class="overlay">
+    <div class="popup">
+        <button class="close-btn">&times;</button>
+        <h2>Your Info</h2>
+        <form action="{% url 'buy_ticket' id=event.id %}" method="POST" id="infoForm">
+            {% csrf_token %}
+            <div class="form-group">
+                <label>Name <span class="required">*</span></label>
+                <input type="text" name="name" placeholder="Your Name">
+            </div>
+            <div class="form-group">
+                <label>Email <span class="required">*</span></label>
+                <input type="email" name="email" placeholder="you@email.com" >
+            </div>
+
+            <div class="form-group">
+                <label>Phone Number <span class="required">*</span></label>
+                <input type="tel" name="phone" placeholder="9876543210">
+            </div>
+            <div class="form-group">
+                <label>Collage Name</label>
+                <input type="text" name="collage" placeholder="ABC Collage">
+            </div>
+            <div class="form-group">
+                <label>Convince us you’re not here just for the snacks.</label>
+                <textarea name="reason" id="reason" placeholder="Why do you want to join"></textarea>
+            </div>
+            <button type="submit">Buy Ticket</button>
+        </form>
+    </div>
+
+</div>
+

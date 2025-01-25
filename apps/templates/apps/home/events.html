@@ -1,0 +1,141 @@
+{% extends "layouts/home_base.html" %}
+
+
+{% block addon_css %}
+<link rel="stylesheet" href="{{ ASSETS_ROOT }}/apps/home/events.css">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+{% endblock addon_css %}
+
+{% block body %}
+
+
+    <section class="hero-home flex">
+        <div class="max-width flex">
+            <div class="intro flex">
+                <h3 class="vibranta">VIBRANTA<p></p>
+                </h3><h1>Grand Festivity</h1>
+                <p class="quote">Where passion and creativity unite, Vibranta stands as a beacon of unforgettable experiences. We don’t just plan events; we craft stories, foster connections, and ignite emotions that echo beyond the moment.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="next-event">
+        <h1>Upcoming Event</h1>
+        <div class="upcoming-event-box"></div>
+    </section>
+
+
+
+  <section class="event-schedule-container">
+    <h1>Events in Queue</h1>
+    <div class="event-list">
+    
+
+    {% for event in events %}
+      
+      
+    <a href="{% url 'events_details' id=event.id %}" class="event-link">
+        <div class="event-box" id="{{event.id}}">
+            {% if event.image %}
+              <img src="{{ event.image.url }}" alt="{{ event.name }}" class="event-image">
+            {% else %}
+              < img src="" alt="Default Image" class="event-image">
+            {% endif %}
+            <div class="event-details">
+            <h3 class="event-title">{{ event }}</h3>
+            <p class="event-description">{{event.description}}</p>
+            <p class="event-date">Date: Yet to announced</p>
+          </div>
+        </div>
+      </a>
+      
+    {% endfor %}
+
+    </div>
+  </section>
+
+
+<!--           Pagination        -->
+
+  <div class="pagination ">
+
+    {% if events.has_previous %}
+        <button class="paginate left"  id="paginate-left" page_number="{{ events.previous_page_number }}"><i></i><i></i></button>
+    {% else %}
+    <button class="paginate left" id="paginate-left" data-state="disabled"><i></i><i></i></button>
+    {% endif %}
+    
+    <div class="counter">{{ events.number }}  / {{ events.paginator.num_pages }} </div>
+
+
+    {% if events.has_next %}
+      <button class="paginate right" id="paginate-right"  page_number="{{ events.next_page_number }}"><i></i><i></i></button></a>
+    {% else %}
+    <button class="paginate right" id="paginate-right"  data-state="disabled"><i></i><i></i></button>
+    {% endif %}
+  </div>
+
+  
+
+{% endblock body %}
+
+{% block addon_js %}
+
+
+<script>
+  function createEventList(events) {
+    var eventListContainer = $(".event-list"); // Get the container to append the events
+    eventListContainer.empty();
+    // Loop through the events array
+    events.forEach(function(event){
+        // Create the event HTML structure
+        var eventHTML = `
+              <a href="/events/${event.id}" class="event-link">
+                  <div class="event-box">
+                      <img src="/media/${event.image}" alt="${event.name}" class="event-image">
+                      <div class="event-details">
+                          <h3 class="event-title">${event.name}</h3>
+                          <p class="event-description">${event.description}</p>
+                          <p class="event-date">Date: ${event.date}</p>
+                      </div>
+                  </div>
+              </a>
+        `;
+        // Append the event HTML to the container
+        eventListContainer.append(eventHTML);
+      });
+}
+
+function setEventPagination(events) {
+  $('#paginate-left').attr('data-state', events.has_previous? '' : 'disabled');
+  $('#paginate-left').attr('page_number', events.has_previous ? `${events.previous_page_number}` : '');
+  $('.counter').text(`${events.current_page} / ${events.total_pages}`);
+  $('#paginate-right').attr('data-state', events.has_next ? '' : 'disabled');
+  $('#paginate-right').attr('page_number', events.has_next ? `${events.next_page_number}` : '');
+}
+
+$(document).ready(function(){
+  $('.paginate').click(function(){
+    var Page = $(this).attr('page_number'); 
+    if (!Page) {
+      console.log("Pagination: don't waste time ");   
+      return; // Exit the function
+  }
+      $.ajax({
+          url: "{% url 'events' %}",
+          type: "GET",
+          data: { 'page': Page },
+          success: function(response) {
+              console.log('AJAX successfull')
+              createEventList(response.events);
+              setEventPagination(response);
+          },
+          error: function(xhr, status, error) {
+              alert('Ajax Failed')
+          }
+      });
+  });
+});
+</script>
+{% endblock addon_js %}
+

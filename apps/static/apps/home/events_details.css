@@ -1,0 +1,185 @@
+
+.next-event{
+    background-color: #1e1e1e; /* Slightly lighter dark background */
+    border-radius: 8px;
+    padding: 20px;
+    max-width: 1200px;
+    height: 100vh;
+    margin: 0 auto;
+    margin-top: 100px;
+  }
+  .next-event h1{
+    text-align: center;
+    color: #ff9800; /* Accent color for headings */
+    margin-bottom: 20px;
+    font-family: sans-serif;
+    font-style: normal;
+    font-size: 3rem;
+    line-height: 96px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    background: -webkit-linear-gradient(#333,#eee);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+
+
+
+   .register-btn{
+    background: linear-gradient(to bottom right, #EF4765, #FF9A5A);
+    border: 0;
+    border-radius: 12px;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: inline-block;
+    font-family: -apple-system,system-ui,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 2.5;
+    outline: transparent;
+    padding: 5px 40px;
+    text-align: center;
+    text-decoration: none;
+    transition: box-shadow .2s ease-in-out;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    white-space: nowrap;
+    }
+    
+    .register-btn:not([disabled]):focus {
+    box-shadow: 0 0 .25rem rgba(0, 0, 0, 0.5), -.125rem -.125rem 1rem rgba(239, 71, 101, 0.5), .125rem .125rem 1rem rgba(255, 154, 90, 0.5);
+    }
+    
+    .register-btn:not([disabled]):hover {
+    box-shadow: 0 0 .25rem rgba(0, 0, 0, 0.5), -.125rem -.125rem 1rem rgba(239, 71, 101, 0.5), .125rem .125rem 1rem rgba(255, 154, 90, 0.5);
+    }
+    
+
+
+
+
+
+
+
+
+  
+
+
+    /* Overlay styles */
+    .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(5px);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        z-index: 1000;
+    }
+
+    .overlay.active {
+        display: flex;
+    }
+
+    /* Popup styles */
+    .popup {
+        background-color: #1c1c1c;
+        padding: 2rem;
+        border-radius: 8px;
+        width: 100%;
+        max-width: 500px;
+        position: relative;
+        animation: slideIn 0.3s ease-out;
+    }
+
+    @keyframes slideIn {
+        from {
+            transform: translateY(-20px);
+            opacity: 0;
+        }
+        to {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+
+    .close-btn {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        background: none;
+        border: none;
+        color: #fff;
+        font-size: 1.5rem;
+        cursor: pointer;
+        opacity: 0.7;
+    }
+
+    .close-btn:hover {
+        opacity: 1;
+    }
+
+    h2 {
+        color: #fff;
+        margin-bottom: 1.5rem;
+        font-size: 1.5rem;
+    }
+
+    .form-group {
+        margin-bottom: 1rem;
+    }
+
+    label {
+        display: block;
+        color: #fff;
+        margin-bottom: 0.5rem;
+        font-size: 0.9rem;
+    }
+
+    label .required {
+        color: #fff;
+        margin-left: 2px;
+    }
+
+    input, select,textarea {
+        width: 100%;
+        padding: 0.75rem;
+        background-color: #2c2c2c;
+        border: none;
+        border-radius: 4px;
+        color: #fff;
+        font-size: 0.9rem;
+    }
+
+    input::placeholder {
+        color: #666;
+    }
+
+    select {
+        appearance: none;
+        background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+        background-repeat: no-repeat;
+        background-position: right 1rem center;
+        background-size: 1em;
+    }
+
+    button[type="submit"] {
+        width: 100%;
+        padding: 0.75rem;
+        background-color: #fff;
+        color: #000;
+        border: none;
+        border-radius: 4px;
+        font-size: 0.9rem;
+        cursor: pointer;
+        margin-top: 1rem;
+    }
+
+    button[type="submit"]:hover {
+        background-color: #f0f0f0;
+    }
