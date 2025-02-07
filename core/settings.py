@@ -21,14 +21,6 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 CORE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TEMPLATE_DIR = os.path.join(CORE_DIR, "apps/templates")
 ASSETS_ROOT = os.getenv('ASSETS_ROOT', '/static') 
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
-STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'),
-]
 
 # ----------------------------------------------
 # Core Settings
@@ -77,6 +69,8 @@ MIDDLEWARE = [
     'allauth.account.middleware.AccountMiddleware',
 ]
 
+DEBUG = False
+
 # ----------------------------------------------
 # Templates and Static Files
 # ----------------------------------------------
@@ -116,13 +110,6 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-
-MIDDLEWARE = [
-    'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',  # Add this
-    'django.contrib.sessions.middleware.SessionMiddleware'
-]
-
 
 # ----------------------------------------------
 # Authentication
