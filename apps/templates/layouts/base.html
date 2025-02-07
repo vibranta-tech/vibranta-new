@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+    {% comment %} <link rel="stylesheet" href="{{ ASSETS_ROOT }}/layouts/base.css"> {% endcomment %}
+    <link rel="stylesheet" href="{{ ASSETS_ROOT }}/includes/navbar.css">
+    {% block addon_css %}{% endblock addon_css %}
+    {% block addon_head %}{% endblock addon_head %}
+    
+
+</head>
+
+<body>
+
+    {% comment %} {% include "includes/success_alert.html" %} {% endcomment %}
+
+    {% include "includes/loading.html" %}
+    {% include "includes/navbar.html" with menu_btn="events" %}
+
+    {% block body %}{% endblock body%}
+
+
+
+
+    
+      {% block addon_js %}{% endblock addon_js %}
+    <script src="{{ ASSETS_ROOT }}/includes/navbar.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,1 @@
+initializePayment(event_id, amount, razorpay_api_key, paymentUrl, verifyPaymentUrl,members_data=null)

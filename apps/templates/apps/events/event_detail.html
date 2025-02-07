@@ -1,0 +1,630 @@
+{% extends "layouts/base.html" %}
+
+
+
+{% block addon_head %}
+      <meta name="csrf-token" content="{{ csrf_token }}">
+      <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet"/>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+      <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;700&display=swap" rel="stylesheet"/>
+      <script src="https://kit.fontawesome.com/1dc055f0a8.js" crossorigin="anonymous"></script>
+      <link rel="stylesheet" href="{{ ASSETS_ROOT }}/apps/events/event_detail.css" />
+      <link rel="stylesheet" href="{{ ASSETS_ROOT }}/apps/events/mobile.css" />
+      <link rel="stylesheet" href="{{ ASSETS_ROOT }}/includes/registration_form.css" />
+      <script src="https://checkout.razorpay.com/v1/checkout.js"></script> <!-- Razorpay script -->
+
+{% endblock addon_head %}
+
+
+{% block addon_css %}{% endblock addon_css %}
+
+
+{% block body %}
+
+
+
+
+    <section class="hero">
+      <div id="particles-js"></div>
+      <div class="hero-content">
+        <h1>{{event.name}} <span class="year">{{event.span}}</span></h1>
+        <p>Where AI Meets Creativity and Ideas Turn Into Reality</p>
+        <a class="cta-button" id="openFormBtn">Join the Challenge</a><br /><br />
+        {% comment %} <button class="cta-button" id="openFormBtn">Join the Challenge</a><br /><br /> {% endcomment %}
+        <!-- <a href="#" class="cta-button" id="buyTicket">Buy Ticket</a> -->
+      </div>
+  
+      <div class="blending"></div>
+    </section>
+  
+    <!-- countdown-->
+    <section class="countdown-v3">
+      <!-- <div class="countdown-bg"></div> -->
+      <div class="countdown-text">Time’s Running Out—Are You In?</div>
+      <div class="countdown-digits">
+        <div class="digit-container">
+          <span id="days" class="digit">14</span>
+          <div class="digit-label">Days</div>
+        </div>
+        <!-- <div class="colon">:</div> -->
+        <div class="digit-container">
+          <span id="hours" class="digit">06</span>
+          <div class="digit-label">Hours</div>
+        </div>
+        <!-- <div class="colon">:</div> -->
+        <div class="digit-container">
+          <span id="minutes" class="digit">32</span>
+          <div class="digit-label">Minutes</div>
+        </div>
+        <!-- <div class="colon">:</div> -->
+        <div class="digit-container">
+          <span id="seconds" class="digit">45</span>
+          <div class="digit-label">Seconds</div>
+        </div>
+      </div>
+    </section>
+  
+    <!--About-->
+    <section id="about" class="fade-in">
+      <div class="container">
+        <div class="about-content">
+          <!-- <div class="about-image">
+              <img src="{{ ASSETS_ROOT }}/images/Resourses/asset9.jpg" alt="AI Hackathon" />
+            </div> -->
+          <div class="about-text">
+            <h2>Prompt Builder 2025 – Where Innovation Meets Competition! </h2>
+            <p>
+              Are you ready to revolutionize <strong>Intelligence, Cloud Computing, and Prompt Engineering</strong>?
+              <strong>Prompt Builder 2025</strong> is not just a hackathon—it’s a stage for visionaries, developers, and
+              AI enthusiasts to create, collaborate, and compete in solving real-world challenges.
+  
+              Join forces with <strong>brilliant minds</strong>, push the boundaries of <strong>cutting-edge
+                technology</strong>, and showcase your skills in an electrifying environment. Whether you're a
+              <strong>coder, innovator, or problem-solver</strong>, this is your chance to make an impact, learn from
+              industry experts, and take AI-powered solutions to the next level.
+              <br>
+              Get ready for <strong>intense coding, groundbreaking ideas, and an experience like never before!</strong>
+              Are you up for the challenge? 💡🔥
+  
+            </p>
+          </div>
+        </div>
+ 
+
+
+        <div class="event-info-cards">
+          <div class="card">
+              <h3>📅 Date</h3>
+              <p>21 - 22 February, 2025</p>
+          </div>
+
+          <div class="card">
+              <h3>📍 Venue</h3>
+              <p>{{event.venue}}</p>
+          </div>
+
+          <div class="card">
+              <h3>✨ Theme</h3>
+              <p>{{event.focus}}</p>
+          </div>
+      </div>
+
+
+
+
+
+
+
+  
+        <div class="soft-skills">
+          <div class="soft-box1"></div>
+          <div class="soft-box2"></div>
+          <div class="soft-box3"></div>
+          <div class="soft-box4"></div>
+        </div>
+      </div>
+    </section>
+  
+    <!-- Prizes Section -->
+    <section id="prizes" class="fade-in">
+      <div class="container">
+        <h2 class="section-heading">Claim Your Victory! 🏅</h2>
+        <div class="prizes-grid">
+          <!-- Gold -->
+          <div class="award-card gold">
+            <div class="award-card-inner">
+              <div class="award-card-front">
+                <!-- <div class="medal-icon">🥇</div> -->
+                <!-- <div class="medal-icon"><img src="{{ ASSETS_ROOT }}/images/Resourses/trophy.svg" alt=""></div> -->
+                <div class="medal-icon icon1"   style ="mask-image: url({{ ASSETS_ROOT }}/images/Resourses/trophy.svg);"></div>
+                <h3>Sage</h3>
+                <p class="prize-amount gradient-text">&#8377 100,000</p>
+              </div>
+              <div class="award-card-back">
+                <!-- <div class="prize-details">
+                    <p>Mentorship from Industry Expert</p>
+                    <p>VIP conference access</p>
+                    <p>$100 aws cloud credits</p>
+                    <p>Featured in tech journal</p>
+                  </div> -->
+              </div>
+            </div>
+          </div>
+  
+          <!-- Silver -->
+          <div class="award-card silver">
+            <div class="award-card-inner">
+              <div class="award-card-front">
+                <!-- <div class="medal-icon">🥈</div> -->
+                <div class="medal-icon icon2" style ="mask-image: url({{ ASSETS_ROOT }}/images/Resourses/trophy.svg);"></div>
+                <h3>Luminary</h3>
+                <p class="prize-amount gradient-text">&#8377 75,000</p>
+              </div>
+              <div class="award-card-back">
+                <!-- <div class="prize-details">
+                    <p>Expert mentoring sessions</p>
+                    <p>Conference gold pass</p>
+                    <p>$2500 cloud credits</p>
+                    <p>Featured in newsletter</p>
+                  </div> -->
+              </div>
+            </div>
+          </div>
+  
+          <!-- Bronze -->
+          <div class="award-card bronze">
+            <div class="award-card-inner">
+              <div class="award-card-front">
+                <!-- <div class="medal-icon">🥉</div> -->
+                <div class="medal-icon icon3" style ="mask-image: url({{ ASSETS_ROOT }}/images/Resourses/trophy.svg);"></div>
+                <h3>Virtuoso</h3>
+                <p class="prize-amount gradient-text">&#8377 50,000</p>
+              </div>
+              <div class="award-card-back">
+                <!-- <div class="prize-details">
+                    <p>Group mentoring sessions</p>
+                    <p>Conference silver pass</p>
+                    <p>$1000 cloud credits</p>
+                    <p>Community spotlight</p>
+                  </div> -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  
+    <!-- Perks Section -->
+    <section id="perks" class="fade-in">
+      <div class="container">
+        <h2 class="section-heading">VIP Benefits Just for You! 🎁</h2>
+        <div class="cards-grid">
+          <div class="benefit-card">
+            <div class="icon-wrapper"><img src="{{ ASSETS_ROOT }}/images/Resourses/nano.png" alt=""></div>
+            <h3>Cutting-Edge Technologies</h3>
+            <div class="perk-list">
+              <p><i class="fa-solid fa-circle-check"></i> AI-powered innovations</p>
+              <p><i class="fa-solid fa-circle-check"></i> Cloud-based applications</p>
+              <p><i class="fa-solid fa-circle-check"></i> Next-gen technology</p>
+            </div>
+          </div>
+  
+          <div class="benefit-card">
+            <div class="icon-wrapper"><img src="{{ ASSETS_ROOT }}/images/Resourses/conversation.png" alt=""></div>
+            <h3>Network with Experts</h3>
+            <div class="perk-list">
+              <p><i class="fa-solid fa-circle-check"></i> Industry leaders</p>
+              <p><i class="fa-solid fa-circle-check"></i> Top mentors</p>
+              <p><i class="fa-solid fa-circle-check"></i> Expert judges</p>
+            </div>
+          </div>
+  
+          <div class="benefit-card">
+            <div class="icon-wrapper"><img src="{{ ASSETS_ROOT }}/images/Resourses/team.png" alt=""></div>
+            <h3>Collaborate & Compete</h3>
+            <div class="perk-list">
+              <p><i class="fa-solid fa-circle-check"></i> Form teams</p>
+              <p><i class="fa-solid fa-circle-check"></i> Brainstorm ideas</p>
+              <p><i class="fa-solid fa-circle-check"></i> Showcase skills</p>
+            </div>
+          </div>
+  
+          <div class="benefit-card">
+            <div class="icon-wrapper"><img src="{{ ASSETS_ROOT }}/images/Resourses/award.png" alt=""></div>
+            <h3>Win Exciting Rewards</h3>
+            <div class="perk-list">
+              <p><i class="fa-solid fa-circle-check"></i> Industry recognition</p>
+              <p><i class="fa-solid fa-circle-check"></i> Valuable prizes</p>
+              <p><i class="fa-solid fa-circle-check"></i> Tech impact</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  
+    <!--Technologies you needto know-->
+    <section id="technologies" class="fade-in">
+      <div class="container">
+        <h2 class="section-heading">🚀 Tech & Essentials</h2>
+        <!-- <p class="section-subtitle">
+            Everything you need to know before joining the event!
+          </p> -->
+  
+        <div class="tech-grid">
+          <!-- Python -->
+          <div class="tech-card">
+            <div class="icon-wrapper tech-icon icon-wrapper1"><img src="{{ ASSETS_ROOT }}/images/Resourses/python-logo-only.png" alt=""></div>
+            <h3>Python</h3>
+          </div>
+  
+          <!-- Backend Technologies -->
+          <div class="tech-card">
+            <div class="icon-wrapper tech-icon icon-wrapper2"><img src="{{ ASSETS_ROOT }}/images/Resourses/SageMaker.png" alt=""></div>
+            <h3>SageMaker</h3>
+            <!-- <p>Node.js, Express.js, MongoDB, Firebase</p> -->
+          </div>
+  
+          <!-- DevOps -->
+          <div class="tech-card">
+            <div class="icon-wrapper tech-icon icon-wrapper3"><img src="{{ ASSETS_ROOT }}/images/Resourses/DynamoDB.png" alt=""></div>
+            <h3>DynamoDB</h3>
+            <!-- <p>Docker, Kubernetes, AWS, CI/CD</p> -->
+          </div>
+  
+          <!-- IAM -->
+          <div class="tech-card">
+            <div class="icon-wrapper tech-icon icon-wrapper4"><img src="{{ ASSETS_ROOT }}/images/Resourses/IAM Identity Center.png" alt=""></div>
+            <h3>IAM</h3>
+            <!-- <p></p> -->
+          </div>
+  
+          <!-- IoT Core -->
+          <div class="tech-card">
+            <div class="icon-wrapper tech-icon icon-wrapper5"><img src="{{ ASSETS_ROOT }}/images/Resourses/IoT Core.png" alt=""></div>
+            <h3>IoT Core</h3>
+            <!-- <p>Git, GitHub, GitLab</p> -->
+          </div>
+  
+          <!-- Kenesis Video Streaming  -->
+          <div class="tech-card">
+            <div class="icon-wrapper tech-icon"><img src="{{ ASSETS_ROOT }}/images/Resourses/Kinesis Video Streams.png" alt=""></div>
+            <h3>Kenesis Video Streaming </h3>
+            <!-- <p>Teamwork, Problem-solving, Communication</p> -->
+          </div>
+          <div class="tech-card">
+            <div class="icon-wrapper tech-icon"><img src="{{ ASSETS_ROOT }}/images/Resourses/Lambda.png" alt=""></div>
+            <h3>Lambda</h3>
+            <!-- <p>Teamwork, Problem-solving, Communication</p> -->
+          </div>
+          <div class="tech-card">
+            <div class="icon-wrapper tech-icon"><img src="{{ ASSETS_ROOT }}/images/Resourses/Simple Storage Service.png" alt=""></div>
+            <h3>Simple Storage Service Bucket</h3>
+            <!-- <p>Teamwork, Problem-solving, Communication</p> -->
+          </div>
+          <div class="tech-card">
+            <div class="icon-wrapper tech-icon"><img src="{{ ASSETS_ROOT }}/images/Resourses/bedrock-color.svg" alt=""></div>
+            <h3>AWS BedRock</h3>
+            <!-- <p>Teamwork, Problem-solving, Communication</p> -->
+          </div>
+          <div class="tech-card">
+            <div class="icon-wrapper tech-icon"><img src="{{ ASSETS_ROOT }}/images/Resourses/EC2.png" alt=""></div>
+            <h3>EC2 Instance</h3>
+            <!-- <p>Teamwork, Problem-solving, Communication</p> -->
+          </div>
+          <div class="tech-card">
+            <div class="icon-wrapper tech-icon"><img src="{{ ASSETS_ROOT }}/images/Resourses/Amazon-PartyRock-Article-1-1024x508.png" alt="">
+            </div>
+            <h3>AWS Party Rocker</h3>
+            <!-- <p>Teamwork, Problem-solving, Communication</p> -->
+          </div>
+        </div>
+      </div>
+    </section>
+  
+    <section id="schedule" class="fade-in">
+      <div class="container">
+        <h2 class="section-heading">Event Schedule</h2>
+        <div class="timeline">
+          <div class="timeline-item left">
+            <div class="timeline-content">
+              <h3>Kickoff</h3>
+              <p><strong>Day 1 - 12:00 PM – 12:10 PM</strong></p>
+              <p><strong>Welcome Note by Organizers</strong></p>
+              <!-- <p>Formal introduction to Prompt Builder 2025.</p>
+                <p>Acknowledgment of judges, sponsors, and key stakeholders.</p> -->
+            </div>
+          </div>
+          <div class="timeline-item right">
+            <div class="timeline-content">
+              <h3>Hacking Begins</h3>
+              <p>Day 1 - 12:10 PM – 12:20 PM</p>
+              <p>Overview of Hackathon</p>
+            </div>
+          </div>
+          <div class="timeline-item left">
+            <div class="timeline-content">
+              <h3>Midway Check-in</h3>
+              <p>Day 1 - 12:20 PM – 12:40 PM</p>
+              <p>Introduction of Judges</p>
+            </div>
+          </div>
+          <div class="timeline-item right">
+            <div class="timeline-content">
+              <h3>Final Submissions</h3>
+              <p>Day 2 - 12:40 PM – 1:20 PM</p>
+              <p>Mentorship Panel Discussion</p>
+            </div>
+          </div>
+          <div class="timeline-item left">
+            <div class="timeline-content">
+              <h3>Judging & Awards</h3>
+              <p>Day 1 - 1:20 PM – 1:50 PM</p>
+              <p>Breakout Mentorship Sessions</p>
+            </div>
+          </div>
+          <div class="timeline-item right">
+            <div class="timeline-content">
+              <h3>Final Submissions</h3>
+              <p>Day 1 - 1:50 PM – 2:00 PM</p>
+              <p>Closing Remarks</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  
+
+    <section class="speakers-section">
+      <div class="speakers-container">
+        <h1 class="section-heading">Featured Judges</h1>
+        <div class="speakers-grid">
+        {% for judge in judges %}
+          <div class="speaker-card">
+            <div class="speaker-card-inner">
+              <div class="speaker-card-front">
+                <div class="speaker-image"><img src="{{judge.image.url}}" alt="judge_image"></div>
+                <h2 class="speaker-name">{{judge.name}}</h2>
+                <p class="speaker-role">{{judge.profession}}</p>
+                {% if judge.company is not None %}<p>At {{judge.company}}</p>{% endif %}
+              </div>
+              <div class="speaker-card-back">
+                <h2 class="speaker-name">{{judge.name}}</h2>
+                <p class="speaker-bio">
+                  {{judge.bio}}
+                </p>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+        
+        </div>
+      </div>
+    </section>
+
+
+
+
+
+
+
+
+
+
+    <!--partner-->
+    <section class="partner-section">
+      <h2 class="title">Powered by</h2>
+      <div class="sponsor-box">
+        <div class="sponsor-logo">
+          <img src="https://img.icons8.com/win10/512/FFFFFF/amazon-web-services.png" alt="Sponsor 1">
+        </div>
+        
+      </div>
+    </section>
+   
+    <!--FAQs-->
+
+    <section id="faq" class="fade-in">
+      <div class="container">
+        <h2 class="section-heading">Frequently Asked Questions</h2>
+        <div class="faq-list">
+          <div class="faq-item">
+            <div class="faq-question">What is Prompt Builder 2025?</div>
+            <div class="faq-answer">
+              Prompt Builder 2025 is an exciting hackathon focused on Prompt Engineering & Generative AI, where
+              participants will develop innovative AI-driven solutions, receive mentorship from industry experts, and
+              compete for top recognition.
+            </div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question">Who can participate in the hackathon?</div>
+            <div class="faq-answer">
+              Anyone passionate about AI, machine learning, and prompt engineering can participate. Whether you're a
+              student, developer, designer, or AI enthusiast, this is your chance to showcase your skills!
+            </div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question">What is the registration process?
+            </div>
+            <div class="faq-answer">
+              <p>To register, follow these steps:</p>
+              <p>✅ Click on the “Register Now” button on our website.</p>
+              <p>✅ Choose your category: Team (max 4 members) or Individual.</p>
+              <p>✅ Complete the payment process (₹349 per team / ₹99 per individual).</p>
+              <p>✅ You will receive a confirmation email with event details.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question">Can I participate individually or do I need a team?</div>
+            <div class="faq-answer">
+              Yes! You can participate as an individual or form a team of up to 4 members.
+            </div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question">What is the duration of the hackathon?</div>
+            <div class="faq-answer">
+              It is a 6-hour hackathon, packed with problem-solving, mentorship, and innovation.
+            </div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question">What will I gain from participating?</div>
+            <div class="faq-answer">
+              <p>✅ Hands-on experience in Generative AI & Prompt Engineering</p>
+              <p>✅ Mentorship from industry experts</p>
+              <p>✅ Certification of Excellence for all participants</p>
+              <p>✅ Chance to win exciting prizes and recognition</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question">What do I need to bring for the hackathon?</div>
+            <div class="faq-answer">
+              <p>
+                💻 Laptop & charger
+              </p>
+              <p>
+                📂 Any required software/tools installed
+              </p>
+              <p>
+                📑 Your college/work ID (if applicable)
+              </p>
+              <p>
+                ⚡ Enthusiasm and creativity!
+              </p>
+            </div>
+          </div>
+  
+          <div class="faq-item">
+            <div class="faq-question"> Will there be mentorship during the event?</div>
+            <div class="faq-answer">
+              Yes! Our industry mentors will provide guidance to help refine your ideas and solutions.
+            </div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question">Will I get a certificate for participating?</div>
+            <div class="faq-answer">
+              Yes! Every participant will receive an official Prompt Builder 2025 certificate, recognizing their effort
+              and contribution.
+            </div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question">How do I submit my project?</div>
+            <div class="faq-answer">
+              Details about the submission process will be shared at the event. Ensure you follow all guidelines and
+              submit before the deadline.
+            </div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question">What are the judging criteria?</div>
+            <div class="faq-answer">
+              Projects will be evaluated based on:
+              <p>🧠 Innovation & Creativity</p>
+              <p>⚙ Technical Implementation</p>
+              <p>💡 Impact & Feasibility</p>
+              <p>🎤 Presentation & Explanation</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question">How do I stay updated about the event?</div>
+            <div class="faq-answer">
+              Follow us on Instagram, LinkedIn, and Twitter, and keep an eye on your email for updates!
+            </div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question">I have more questions. How can I contact you?</div>
+            <div class="faq-answer">
+              For any queries, reach out to us at
+              <a
+                href="mailto: vibranta.helpdesk@gmail.com?subject=Support Request&body=Hello, I need help with...">vibranta.helpdesk@gmail.com</a>
+  
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+    </section>
+
+
+
+   <!-- <h1>Contact</h1> -->
+    <section class="contact-section" id="contact">
+      <h2 class="title">Contact Us</h2>
+      <div class="contact-content">
+          <div class="column left">
+              <div class="text1">Slide Into Our Inbox 📩</div>
+              <p>Contact Us Before AI Takes Over 🤖</p>
+              <div class="icons">
+                  <div class="row">
+                      <i class="fas fa-envelope"></i>
+                      <div class="info">workwithvibranta@gmail.com</div>
+                  </div>
+                  <div class="row">
+                      <i class="fas fa-phone"></i>
+                      <div class="info">+91 9771072294</div>
+                  </div>
+              </div>
+          </div>
+          <div class="column right">
+              <form action="https://formspree.io/f/xyyrzpeg" method="POST">
+                  <div class="field">
+                      <input type="text" name="name" placeholder="Name" required>
+                  </div>
+                  <div class="field">
+                      <input type="email" name="email" placeholder="Email" required>
+                  </div>
+                  <div class="field">
+                      <input type="text" name="Subject" placeholder="Subject" required>
+                  </div>
+                  <div class="textarea">
+                      <textarea name="message" placeholder="Message.." required></textarea>
+                  </div>
+                  <div class="button-area">
+                      <button type="submit">SUBMIT</button>
+                  </div>
+              </form>
+          </div>
+      </div>
+    </section>
+
+
+
+    <footer>
+      <div class="container">
+        <div class="social-links">
+          <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+          <!-- <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a> -->
+          <a href="https://www.instagram.com/vibranta.in/" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        </div>
+        <p>&copy; 2023 Vibranta. All rights reserved.</p>
+      </div>
+    </footer>
+  
+    
+
+    
+  {% include "includes/registration_form.html" %}
+
+
+
+{% endblock body%}
+
+
+
+
+
+
+{% block addon_js %}
+
+
+<script type="text/javascript">
+  const paymentUrl = "{% url 'payment' %}";
+  const verifyPaymentUrl = "{% url 'verify_payment' %}";
+  const event_id=1
+  const event_amount={{event.price}}
+  const datetime = "{{event.datetime}}"
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
+<script src="{{ ASSETS_ROOT }}/apps/events/event_detail.js"></script>
+<script type="module" src="{{ ASSETS_ROOT }}/apps/payments/api.js"></script>
+<script src="{{ ASSETS_ROOT }}/includes/registration_form.js"></script>
+{% endblock addon_js %}

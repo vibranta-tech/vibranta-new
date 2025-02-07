@@ -1,0 +1,203 @@
+@media (max-width:480px) {
+
+
+    .navbar img {
+        width: 46px;
+        height: 38px;
+    }
+    .countdown-text {
+        /* font-family: "Chakra Petch", sans-serif; */
+        font-size: 2rem;
+        font-weight: bold;
+        color: #ffffff;
+        /* text-shadow: 0 0 20px var(--neon-pink); */
+        margin-bottom: 1.5rem;
+        letter-spacing: 2px;
+    }
+
+    .countdown-digits {
+        display: flex;
+        gap: 0.6rem;
+
+
+    }
+
+    .digit-container {
+        position: relative;
+        perspective: 1000px;
+        text-align: center;
+        width: 25%;
+        height: 128px;
+        transform-style: preserve-3d;
+        transition: all 0.3s ease;
+        position: relative;
+        padding: 0.5rem 0rem;
+        border-radius: 10px;
+        border: 2px solid rgba(43, 43, 43, 0.525);
+        background: rgba(0, 0, 0, 0.2);
+    }
+
+    .digit {
+
+        font-size: 2rem;
+
+
+        /* background: rgba(0, 0, 0, 0.2); Slight transparency */
+    }
+
+    .digit-label {
+        font-family: "Chakra Petch", sans-serif;
+        /* color: var(--neon-pink); */
+        color: #fff;
+        text-transform: uppercase;
+        font-size: 0.8rem;
+        letter-spacing: 1px;
+        margin-top: 0.5rem;
+    }
+
+
+    .about-text h2 {
+        font-size: 2rem;
+        text-align: left;
+        font-weight: bold;
+        margin-bottom: 20px;
+        text-transform: uppercase;
+        color: #e6e6e6;
+        /* Neon pink color */
+    }
+
+    .about-text p {
+        text-align: left;
+        font-size: 1rem;
+        line-height: 1.8;
+        letter-spacing: 0.5px;
+        margin-bottom: 20px;
+        color: #f1f1f1b8;
+    }
+
+
+    .event-info-cards {
+
+        gap: 1.3rem;
+        margin: 4rem -24px;
+    }
+
+
+    .section-heading {
+        font-size: 2rem;
+        text-align: center;
+        margin-bottom: 3rem;
+        font-family: sans-serif;
+        padding: 20px;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        background: linear-gradient(45deg, #fff, #aaa);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .prizes-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        margin: 4rem -54px;
+    }
+
+
+    .award-card {
+        min-height: 350px;
+        border-radius: 15px;
+        background: rgba(0, 0, 0, 0.2);
+        padding: 2rem;
+        border: 2px solid #161617;
+        transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .medal-icon {
+        font-size: 4rem;
+        margin-bottom: 1.5rem;
+        transition: transform 0.7s ease-in-out;
+        display: inline-block;
+        width: 137px;
+        height: 136px;
+        -webkit-mask-image: url(./Resourses/trophy.svg);
+        mask-image: url(./Resourses/trophy.svg);
+        -webkit-mask-repeat: no-repeat;
+        mask-repeat: no-repeat;
+        -webkit-mask-size: contain;
+        mask-size: contain;
+    }
+
+
+    .prize-amount {
+        font-size: 2rem;
+        font-weight: bold;
+        margin: 1rem 0;
+
+
+    }
+
+    #perks .cards-grid {
+        display: inline-flex;
+        flex-direction: column;
+        gap: 4rem;
+        padding: 2rem 0;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: nowrap;
+    }
+
+    .perk-list {
+      display: none;
+    }
+
+    .icon-wrapper img {
+        width: auto;
+        height: 144px;
+        position: relative;
+       
+    }
+
+    .benefit-card h3{
+        padding:    0px 55px;
+    }
+
+    #technologies .section-heading{
+        /* margin-left: -22px; */
+    }
+
+    .tech-icon img {
+        aspect-ratio: 0;
+        object-fit: contain;
+        mix-blend-mode: color-burn;
+    }
+
+    .tech-grid{
+        grid-template-columns: repeat(auto-fit, minmax(256px, 1fr));
+    }
+
+
+
+    .timeline-content {
+
+        padding: 22px 11px;
+        width: 253px;
+    }
+
+    .timeline-item::after {
+        left: 3px;
+    }
+
+
+
+
+    .speakers-grid {
+        grid-template-columns: 1fr;
+        max-width: 500px;
+        margin: 0 auto;
+        padding: 1rem;
+    }
+}

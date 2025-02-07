@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="csrf-token" content="{{ csrf_token }}">
+    <title>Vibranta | AI Hackathon</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="{{ ASSETS_ROOT }}/apps/events/styles.css">
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script> <!-- Razorpay script -->
+
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <a href="#" class="logo">Vibranta</a>
+            <div class="hamburger">
+               <span></span>
+               <span></span>
+               <span></span>
+           </div>
+            <div class="nav-links">
+                <a href="#about">About</a>
+                <a href="#schedule">Schedule</a>
+                <a href="#prizes">Prizes</a>
+                <a href="#faq">FAQ</a>
+                
+            {% if user.is_authenticated %}
+                <a href="{% url 'logout' %}">Logout <_</a>
+            {% else %}
+                <a href="{% url 'login' %}">Login _></a>
+              
+            
+            {% endif %}
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div id="particles-js"></div>
+        <div class="hero-content">
+            <h1>Vibranta</h1>
+            <p>48-Hour Global AI Hackathon</p>
+            <a href="#" class="cta-button" id="joinChallenge">Join the Challenge</a><br><br>
+            <button class="cta-button" id="pay-button">Buy Ticket</a>
+            
+        </div>
+    </section>
+
+    <section id="about" class="fade-in">
+        <div class="container">
+            <h2>About Vibranta</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Join us for an exhilarating 48-hour journey into the future of AI. Vibranta challenges you to push the boundaries of prompt engineering and create groundbreaking AI applications.</p>
+                    <p>Whether you're a seasoned AI developer or a curious newcomer, this is your chance to showcase your skills, learn from experts, and potentially win big!</p>
+                </div>
+                <div class="about-image">
+                    <img src="https://via.placeholder.com/500x300" alt="AI Hackathon">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="schedule" class="fade-in">
+        <div class="container">
+            <h2>Event Schedule</h2>
+            <div class="timeline">
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <h3>Kickoff</h3>
+                        <p>Day 1 - 9:00 AM</p>
+                        <p>Welcome address and challenge announcement</p>
+                    </div>
+                </div>
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <h3>Hacking Begins</h3>
+                        <p>Day 1 - 10:00 AM</p>
+                        <p>Start your engines! The coding marathon begins</p>
+                    </div>
+                </div>
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <h3>Midway Check-in</h3>
+                        <p>Day 2 - 9:00 AM</p>
+                        <p>Progress updates and mentor sessions</p>
+                    </div>
+                </div>
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <h3>Final Submissions</h3>
+                        <p>Day 2 - 8:00 PM</p>
+                        <p>Wrap up your projects and submit</p>
+                    </div>
+                </div>
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <h3>Judging & Awards</h3>
+                        <p>Day 3 - 10:00 AM</p>
+                        <p>Project presentations and winner announcements</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="prizes" class="fade-in">
+        <div class="container">
+            <h2>Awesome Prizes</h2>
+            <div class="prizes-grid">
+                <div class="prize-card">
+                    <h3>1st Place</h3>
+                    <p class="prize-amount">$10,000</p>
+                    <p>Plus mentorship opportunity with leading AI researchers</p>
+                </div>
+                <div class="prize-card">
+                    <h3>2nd Place</h3>
+                    <p class="prize-amount">$5,000</p>
+                    <p>And a 6-month subscription to top AI platforms</p>
+                </div>
+                <div class="prize-card">
+                    <h3>3rd Place</h3>
+                    <p class="prize-amount">$2,500</p>
+                    <p>Along with exclusive AI conference tickets</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="faq" class="fade-in">
+        <div class="container">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <div class="faq-question">Who can participate?</div>
+                    <div class="faq-answer">Anyone with a passion for AI and prompt engineering, regardless of experience level! We welcome students, professionals, and enthusiasts from all backgrounds.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">What do I need to participate?</div>
+                    <div class="faq-answer">A computer with internet access, your favorite coding environment, and a creative mind ready to tackle AI challenges!</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Is there a registration fee?</div>
+                    <div class="faq-answer">No, participation in Vibranta is completely free of charge.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Can I participate as part of a team?</div>
+                    <div class="faq-answer">Yes, you can participate individually or in teams of up to 4 members.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="social-links">
+                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            </div>
+            <p>&copy; 2023 Vibranta. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <div id="formOverlay" class="overlay">
+        <div class="overlay-content">
+            <span class="close-btn">&times;</span>
+            <form id="challengeForm">
+                <div class="form-page" data-page="1">
+                    <h2>Personal Information</h2>
+                    <div class="form-group">
+                        <label for="fullName">Full Name</label>
+                        <input type="text" id="fullName" name="fullName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="dob">Date of Birth</label>
+                        <input type="date" id="dob" name="dob" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="country">Country</label>
+                        <input type="text" id="country" name="country" required>
+                    </div>
+                </div>
+
+                <div class="form-page" data-page="2">
+                    <h2>Professional Information</h2>
+                    <div class="form-group">
+                        <label for="occupation">Occupation</label>
+                        <input type="text" id="occupation" name="occupation" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="company">Company/Institution</label>
+                        <input type="text" id="company" name="company">
+                    </div>
+                    <div class="form-group">
+                        <label for="experience">Years of Experience</label>
+                        <input type="number" id="experience" name="experience" min="0" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="skills">AI/ML Skills (comma-separated)</label>
+                        <input type="text" id="skills" name="skills" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="github">GitHub Profile</label>
+                        <input type="url" id="github" name="github">
+                    </div>
+                </div>
+
+                <div class="form-page" data-page="3">
+                    <h2>Hackathon Preferences</h2>
+                    <div class="form-group">
+                        <label for="teamSize">Preferred Team Size</label>
+                        <select id="teamSize" name="teamSize" required>
+                            <option value="">Select</option>
+                            <option value="1">Individual</option>
+                            <option value="2">2 members</option>
+                            <option value="3">3 members</option>
+                            <option value="4">4 members</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="projectIdea">Project Idea (brief description)</label>
+                        <textarea id="projectIdea" name="projectIdea" rows="3" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="aiTools">Preferred AI Tools/Frameworks</label>
+                        <input type="text" id="aiTools" name="aiTools" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="challenges">Interested Challenge Tracks</label>
+                        <select id="challenges" name="challenges" multiple required>
+                            <option value="nlp">Natural Language Processing</option>
+                            <option value="cv">Computer Vision</option>
+                            <option value="rl">Reinforcement Learning</option>
+                            <option value="robotics">AI in Robotics</option>
+                            <option value="healthcare">AI in Healthcare</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-page" data-page="4">
+                    <h2>Additional Information</h2>
+                    <div class="form-group">
+                        <label for="dietaryRestrictions">Dietary Restrictions</label>
+                        <input type="text" id="dietaryRestrictions" name="dietaryRestrictions">
+                    </div>
+                    <div class="form-group">
+                        <label for="tshirtSize">T-Shirt Size</label>
+                        <select id="tshirtSize" name="tshirtSize" required>
+                            <option value="">Select</option>
+                            <option value="S">Small</option>
+                            <option value="M">Medium</option>
+                            <option value="L">Large</option>
+                            <option value="XL">X-Large</option>
+                            <option value="XXL">XX-Large</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="referral">How did you hear about us?</label>
+                        <input type="text" id="referral" name="referral">
+                    </div>
+                    <div class="form-group">
+                        <label for="expectations">What do you hope to gain from this hackathon?</label>
+                        <textarea id="expectations" name="expectations" rows="3" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>
+                            <input type="checkbox" id="codeOfConduct" name="codeOfConduct" required>
+                            I agree to follow the Hackathon Code of Conduct
+                        </label>
+                    </div>
+                    <button type="submit" class="submit-btn">Buy Ticket</button>
+                </div>
+
+                <div class="form-navigation">
+                    <button type="button" class="prev-btn" disabled>Previous</button>
+                    <div class="pagination"></div>
+                    <button type="button" class="next-btn">Next</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
+    <script src="{{ ASSETS_ROOT }}/apps/events/script.js"></script>
+    <script type="text/javascript">
+        const paymentUrl = "{% url 'payment' %}";
+        const verifyPaymentUrl = "{% url 'verify_payment' %}";
+      </script>
+    
+      <script src="{{ ASSETS_ROOT }}/apps/payments/payment.js"></script>
+</body>
+</html>
+

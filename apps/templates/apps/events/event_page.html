@@ -1,0 +1,367 @@
+{% extends "layouts/base.html" %}
+
+{% block addon_head %}
+    <meta name="csrf-token" content="{{ csrf_token }}">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;700&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="{{ ASSETS_ROOT }}/apps/events/style2.css" />
+    <link rel="stylesheet" href="{{ ASSETS_ROOT }}/includes/registration_form.css" />
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script> <!-- Razorpay script -->
+
+
+{% endblock addon_head %}
+
+
+{% block addon_css %}{% endblock addon_css %}
+
+
+{% block body %}
+
+
+<section class="hero">
+    <div id="particles-js"></div>
+    <div class="hero-content">
+      <h1>Prompt-Builders</h1>
+      <p>Where AI Meets Creativity and Ideas Turn Into Reality</p>
+      <a href="#" class="cta-button" id="joinChallenge">Join the Challenge</a
+      ><br /><br />
+      <button class="cta-button" id="openFormBtn">Buy Ticket</a>
+    </div>
+  </section>
+
+  <!-- countdown-->
+  <section>
+    <div class="countdown-v3">
+      <div class="countdown-bg"></div>
+      <div class="countdown-text">🚀 Launching In</div>
+      <div class="countdown-digits">
+        <div class="digit-container">
+          <span id="days" class="digit">14</span>
+          <div class="digit-label">Days</div>
+          <div class="digit-glare"></div>
+        </div>
+        <div class="colon">:</div>
+        <div class="digit-container">
+          <span id="hours" class="digit">06</span>
+          <div class="digit-label">Hours</div>
+          <div class="digit-glare"></div>
+        </div>
+        <div class="colon">:</div>
+        <div class="digit-container">
+          <span id="minutes" class="digit">32</span>
+          <div class="digit-label">Minutes</div>
+          <div class="digit-glare"></div>
+        </div>
+        <div class="colon">:</div>
+        <div class="digit-container">
+          <span id="seconds" class="digit">45</span>
+          <div class="digit-label">Seconds</div>
+          <div class="digit-glare"></div>
+        </div>
+      </div>
+    </div>
+    <div class="countdown-sparkles"></div>
+  </section>
+
+  <section id="about" class="fade-in">
+    <div class="container">
+      <div class="about-content">
+        <div class="about-image">
+          <img src="./Resourses/abstract.jpg" alt="AI Hackathon" />
+        </div>
+        <div class="about-text">
+          <p>
+            Join us for an exhilarating 48-hour journey into the future of AI.
+            Vibranta challenges you to push the boundaries of prompt
+            engineering and create groundbreaking AI applications.
+          </p>
+          <p>
+            Whether you're a seasoned AI developer or a curious newcomer, this
+            is your chance to showcase your skills, learn from experts, and
+            potentially win big!
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Prizes Section -->
+  <section id="prizes" class="fade-in">
+    <div class="container">
+      <h2 class="section-title">🏆 Awesome Prizes</h2>
+      <div class="cards-grid">
+        <div class="award-card gold">
+          <div class="medal-icon">🥇</div>
+          <h3>1st Place</h3>
+          <p class="prize-amount gradient-text">$10,000</p>
+          <div class="prize-details">
+            <p>+ Mentorship with AI Researchers</p>
+            <p>+ 1-Year Cloud Credits</p>
+            <p>+ Conference VIP Pass</p>
+          </div>
+        </div>
+        <div class="award-card gold">
+          <div class="medal-icon">🥇</div>
+          <h3>1st Place</h3>
+          <p class="prize-amount gradient-text">$10,000</p>
+          <div class="prize-details">
+            <p>+ Mentorship with AI Researchers</p>
+            <p>+ 1-Year Cloud Credits</p>
+            <p>+ Conference VIP Pass</p>
+          </div>
+        </div>
+        <div class="award-card gold">
+          <div class="medal-icon">🥇</div>
+          <h3>1st Place</h3>
+          <p class="prize-amount gradient-text">$10,000</p>
+          <div class="prize-details">
+            <p>+ Mentorship with AI Researchers</p>
+            <p>+ 1-Year Cloud Credits</p>
+            <p>+ Conference VIP Pass</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Perks Section -->
+  <section id="perks" class="fade-in">
+    <div class="container">
+      <h2 class="section-title">💎 Exclusive Perks</h2>
+      <div class="cards-grid">
+        <div class="benefit-card">
+          <div class="icon-wrapper">🛠️</div>
+          <h3>Build Cutting-Edge Solutions</h3>
+          <div class="perk-list">
+            <p>▹ AI-powered innovations</p>
+            <p>▹ Cloud-based applications</p>
+            <p>▹ Next-gen technology</p>
+          </div>
+        </div>
+
+        <div class="benefit-card">
+          <div class="icon-wrapper">🤝</div>
+          <h3>Network with Experts</h3>
+          <div class="perk-list">
+            <p>▹ Industry leaders</p>
+            <p>▹ Top mentors</p>
+            <p>▹ Expert judges</p>
+          </div>
+        </div>
+
+        <div class="benefit-card">
+          <div class="icon-wrapper">🚀</div>
+          <h3>Collaborate & Compete</h3>
+          <div class="perk-list">
+            <p>▹ Form teams</p>
+            <p>▹ Brainstorm ideas</p>
+            <p>▹ Showcase skills</p>
+          </div>
+        </div>
+
+        <div class="benefit-card">
+          <div class="icon-wrapper">🏆</div>
+          <h3>Win Exciting Rewards</h3>
+          <div class="perk-list">
+            <p>▹ Industry recognition</p>
+            <p>▹ Valuable prizes</p>
+            <p>▹ Tech impact</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <section id="schedule" class="fade-in">
+    <div class="container">
+      <h2>Event Schedule</h2>
+      <div class="timeline">
+        <div class="timeline-item left">
+          <div class="timeline-content">
+            <h3>Kickoff</h3>
+            <p>Day 1 - 9:00 AM</p>
+            <p>Welcome address and challenge announcement</p>
+          </div>
+        </div>
+        <div class="timeline-item right">
+          <div class="timeline-content">
+            <h3>Hacking Begins</h3>
+            <p>Day 1 - 10:00 AM</p>
+            <p>Start your engines! The coding marathon begins</p>
+          </div>
+        </div>
+        <div class="timeline-item left">
+          <div class="timeline-content">
+            <h3>Midway Check-in</h3>
+            <p>Day 2 - 9:00 AM</p>
+            <p>Progress updates and mentor sessions</p>
+          </div>
+        </div>
+        <div class="timeline-item right">
+          <div class="timeline-content">
+            <h3>Final Submissions</h3>
+            <p>Day 2 - 8:00 PM</p>
+            <p>Wrap up your projects and submit</p>
+          </div>
+        </div>
+        <div class="timeline-item left">
+          <div class="timeline-content">
+            <h3>Judging & Awards</h3>
+            <p>Day 3 - 10:00 AM</p>
+            <p>Project presentations and winner announcements</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!--Judges-->
+  <section>
+    <div class="container">
+      <h1>Our Speakers</h1>
+      <div class="all-cards">
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <div class="card-image"></div>
+              <h2 class="card-title">Front Side</h2>
+              <p class="card-text">Hover to flip</p>
+            </div>
+            <div class="flip-card-back">
+              <h2 class="card-title">Back Side</h2>
+              <p class="card-text">
+                This is the hidden content that appears on flip
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <div class="card-image"></div>
+              <h2 class="card-title">Front Side</h2>
+              <p class="card-text">Hover to flip</p>
+            </div>
+            <div class="flip-card-back">
+              <h2 class="card-title">Back Side</h2>
+              <p class="card-text">
+                This is the hidden content that appears on flip
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <div class="card-image"></div>
+              <h2 class="card-title">Front Side</h2>
+              <p class="card-text">Hover to flip</p>
+            </div>
+            <div class="flip-card-back">
+              <h2 class="card-title">Back Side</h2>
+              <p class="card-text">
+                This is the hidden content that appears on flip
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <div class="card-image"></div>
+              <h2 class="card-title">Front Side</h2>
+              <p class="card-text">Hover to flip</p>
+            </div>
+            <div class="flip-card-back">
+              <h2 class="card-title">Back Side</h2>
+              <p class="card-text">
+                This is the hidden content that appears on flip
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq" class="fade-in">
+    <div class="container">
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-list">
+        <div class="faq-item">
+          <div class="faq-question">Who can participate?</div>
+          <div class="faq-answer">
+            Anyone with a passion for AI and prompt engineering, regardless of
+            experience level! We welcome students, professionals, and
+            enthusiasts from all backgrounds.
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">What do I need to participate?</div>
+          <div class="faq-answer">
+            A computer with internet access, your favorite coding environment,
+            and a creative mind ready to tackle AI challenges!
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">Is there a registration fee?</div>
+          <div class="faq-answer">
+            No, participation in Vibranta is completely free of charge.
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">Can I participate as part of a team?</div>
+          <div class="faq-answer">
+            Yes, you can participate individually or in teams of up to 4
+            members.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="social-links">
+        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+        <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+        <a href="#" aria-label="Instagram"
+          ><i class="fab fa-instagram"></i
+        ></a>
+        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+      </div>
+      <p>&copy; 2023 Vibranta. All rights reserved.</p>
+    </div>
+  </footer>
+
+
+
+
+  {% include "includes/registration_form.html" %}
+
+
+
+
+{% endblock body%}
+
+
+
+
+
+
+{% block addon_js %}
+
+
+<script type="text/javascript">
+  const paymentUrl = "{% url 'payment' %}";
+  const verifyPaymentUrl = "{% url 'verify_payment' %}";
+  const event_id=1
+  const event_amount=200
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
+<script src="{{ ASSETS_ROOT }}/apps/events/script2.js"></script>
+<script type="module" src="{{ ASSETS_ROOT }}/apps/payments/api.js"></script>
+<script src="{{ ASSETS_ROOT }}/includes/registration_form.js"></script>
+{% endblock addon_js %}

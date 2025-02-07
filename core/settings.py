@@ -21,13 +21,24 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 CORE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TEMPLATE_DIR = os.path.join(CORE_DIR, "apps/templates")
 ASSETS_ROOT = os.getenv('ASSETS_ROOT', '/static') 
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+]
 
 # ----------------------------------------------
 # Core Settings
 # ----------------------------------------------
 SECRET_KEY = 'django-insecure--)i0m52p(nts35ff+vdz$0&+6ime+6_urb9yf7o2^r#e-1o2kq'
 DEBUG = True
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS =  ['127.0.0.1', 'localhost', '.ngrok-free.app']
+CSRF_TRUSTED_ORIGINS = ['https://86ea-2409-40d1-1001-7bb1-ec77-81fd-67bf-38a8.ngrok-free.app'
+]
+
 
 # ----------------------------------------------
 # Applications and Middleware
@@ -48,6 +59,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework_simplejwt',
     'django_extensions',
+    'apps.events',
+    'apps.payments',
 
 ]
 
@@ -104,6 +117,13 @@ DATABASES = {
     }
 }
 
+MIDDLEWARE = [
+    'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',  # Add this
+    'django.contrib.sessions.middleware.SessionMiddleware'
+]
+
+
 # ----------------------------------------------
 # Authentication
 # ----------------------------------------------
@@ -113,9 +133,8 @@ AUTHENTICATION_BACKENDS = [
 ]
 
 LOGIN_URL = 'login'
-LOGIN_REDIRECT_URL = 'home'  # Redirect after login
+LOGIN_REDIRECT_URL = 'events'  # Redirect after login
 LOGOUT_REDIRECT_URL = 'login'  # Redirect after logout 
-
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_EMAIL_VERIFICATION = "mandatory"
 
@@ -153,7 +172,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Localization
 # ----------------------------------------------
 LANGUAGE_CODE = 'en-us'
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Kolkata'
 USE_I18N = True
 USE_TZ = True
 

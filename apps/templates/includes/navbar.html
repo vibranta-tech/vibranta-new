@@ -1,38 +1,37 @@
 <nav class="navbar">
     <div class="max-width">
-        <div class="logo"><img src="{{ ASSETS_ROOT }}/images/logo.png" alt=""></div>
+        <img src="{{ ASSETS_ROOT }}/images/logo.png" alt="Logo">
         <div class="menu">
             <ul class="menu-list">
-                <li><a href="{% url 'home' %}" class="menu-btn active">HOME</a></li>
-                <li><a href="{% url 'events' %}"  class="menu-btn">EVENTS</a></li>
-                <li><a href="{% url 'home' %}#about" class="menu-btn">ABOUT</a></li>
-                <li><a href="#" class="menu-btn">TEAM</a></li>
-                <!-- <li><a href="sponsors.html" class="menu-btn">SPONSORS</a></li> -->
-                <li><a href="{% url 'home' %}#contact" class="menu-btn">CONTACT</a></li>
+               
+                <li><a href="/" class="menu-btn {% if menu_btn == "home" %}active{% endif %} ">HOME</a></li>
+                <li><a href="/" class="menu-btn {% if menu_btn == "events" %}active{% endif %} ">EVENTS</a></li>
+                <li><a href="#about" class="menu-btn {% if menu_btn == "about" %}active{% endif %} ">ABOUT</a></li>
+                <li><a href="/" class="menu-btn {% if menu_btn == "team" %}active{% endif %} ">TEAM</a></li>
+                <li><a href="#contact" class="menu-btn {% if menu_btn == "contact" %}active{% endif %} ">CONTACT</a></li>
             </ul>
         </div>
         {% if user.is_authenticated %}
-            {% comment %} <a href="{% url 'logout' %}"><button class="logbtn">Log Out</button></a> {% endcomment %}
-            <div class="dropdown">
-                <img class="profile-icon"src="{{ ASSETS_ROOT }}/images/profile.png">
-                <button class="dropdown-button">{{request.user.username}} ▽</button>
-                <div class="dropdown-content">
-            
-                    <a href="#">Profile</a>
-                    
-                    <a href="#">Settings</a>
-                    <hr>
-                    <a href="{% url 'logout' %}">Logout</a>
-                </div>
-            </div>
-        
+            <a href="{% url 'logout' %}"><button class="logbtn">Log Out</button></a>
         {% else %}
             <a href="{% url 'login' %}"><button class="logbtn">Log In</button></a>
-          
-        
         {% endif %}
-        <div class="menu-btn">
-            <i class="fas fa-bars"></i>
-        </div>
+        <div class="hamburger"> <span></span><span></span><span></span></div>
     </div>
 </nav>
+
+<div class="mobile-menu">
+
+    <ul class="menu-list">
+        <li><a href="#" class="menu-btn active">HOME</a></li>
+        <li><a href="/" class="menu-btn">EVENTS</a></li>
+        <li><a href="#" class="menu-btn">ABOUT</a></li>
+        <li><a href="#" class="menu-btn">TEAM</a></li>
+        <li><a href="#" class="menu-btn">CONTACT</a></li>
+    </ul>
+    {% if user.is_authenticated %}
+        <a href="{% url 'logout' %}"><button class="logbtn">Log Out</button></a>
+    {% else %}
+        <a href="{% url 'login' %}"><button class="logbtn">Log In</button></a>
+    {% endif %}
+</div>
